@@ -1,5 +1,21 @@
 module DatePicker exposing (Model, Msg, view, init, initWithConfig, update, getNow)
 
+{-| A date range picker.
+
+# View
+@docs view
+
+# Update
+@docs init, initWithConfig, getNow, update
+
+# State
+@docs Model
+
+# Definitions
+@docs Msg
+
+-}
+
 import Platform.Cmd as Cmd
 import Html exposing (Html, Attribute, text, div, span, input, label)
 import Html.Events exposing (onClick)
@@ -21,6 +37,8 @@ type Choice
     | None
 
 
+{-| A model to track the state of the date picker.
+-}
 type alias Model =
     { focused : Date
     , choice : Choice
@@ -30,11 +48,21 @@ type alias Model =
     }
 
 
+{-| Set the focus to the current date.
+
+This can be used to initialize the date picker.
+
+    init : Config -> ( Model, Cmd Msg )
+    init config =
+        ( (DatePicker.initWithConfig config), DatePicker.getNow Msg )
+-}
 getNow : (Msg -> msg) -> Cmd msg
 getNow tagger =
     perform (tagger << SetFocused) Date.now
 
 
+{-| An initial state with nothing selected and a default configuration.
+-}
 init : Model
 init =
     { focused = Helpers.defaultDate
@@ -45,6 +73,11 @@ init =
     }
 
 
+{-| Initialize the data picker with nothing selected and a custom configuration.
+
+Custom configurations can be used to override the styling, placeholder strings,
+and whether the picker selects a single date or a range.
+-}
 initWithConfig : Config.Config -> Model
 initWithConfig config =
     { focused = config.defaultDate
@@ -59,12 +92,16 @@ initWithConfig config =
 -- UPDATE
 
 
+{-| A message type for the date picker.
+-}
 type Msg
     = SetFocused Date
     | SetSelecting Choice
     | SetSelected Choice (Maybe Date)
 
 
+{-| Update the date picker.
+-}
 update : Msg -> Model -> Model
 update msg model =
     case msg of
@@ -116,6 +153,8 @@ update msg model =
 -- VIEW
 
 
+{-| Render a date picker.
+-}
 view : Model -> Html Msg
 view model =
     div [ styling model Style.Container ]
