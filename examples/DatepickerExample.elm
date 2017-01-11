@@ -5,7 +5,7 @@ import Platform.Sub as Sub
 import Platform.Cmd as Cmd
 import Date exposing (fromTime, day)
 import DatePicker
-import DatePicker.Config as Config
+import DatePicker.Config as Config exposing (defaultConfig)
 import DatePicker.Style as Style
 
 

@@ -1,6 +1,18 @@
 module DatePicker.Style exposing (..)
 
+{-| Inline styling for the date picker.
 
+# Definitions
+@docs View
+
+# Helpers
+@docs getDefaultStyle
+
+-}
+
+
+{-| All of the view fragments that can be styled.
+-}
 type View
     = Container
     | InputsContainer
@@ -26,6 +38,8 @@ type View
     | DayNotCurrentMonth
 
 
+{-| A default style for the datepicker.
+-}
 getDefaultStyle : View -> List ( String, String )
 getDefaultStyle view =
     case view of

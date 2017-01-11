@@ -38,6 +38,8 @@ type Choice
 
 
 {-| A model to track the state of the date picker.
+
+An instance of this should appear somewhere in your applications model.
 -}
 type alias Model =
     { focused : Date
