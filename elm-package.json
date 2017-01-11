@@ -1,7 +1,7 @@
 {
     "version": "1.0.0",
     "summary": "A date range picker",
-    "repository": "https://github.com/terezka/elm-datepicker.git",
+    "repository": "https://github.com/ianp/elm-datepicker.git",
     "license": "BSD3",
     "source-directories": [
         "./src"
