@@ -1,5 +1,5 @@
 {
-    "version": "1.1.0",
+    "version": "1.1.1",
     "summary": "A date range picker",
     "repository": "https://github.com/ianp/elm-datepicker.git",
     "license": "BSD3",
